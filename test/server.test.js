@@ -42,9 +42,9 @@ tap.test("GET /tasks/:id", async (t) => {
   t.equal(response.status, 200);
   const expectedTask = {
     id: 1,
-    title: "Set up environment",
-    description: "Install Node.js, npm, and git",
-    completed: true,
+    title: "New Task",
+    description: "New Task Description",
+    completed: false,
   };
   t.match(response.body, expectedTask);
   t.end();
