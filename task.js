@@ -49,28 +49,32 @@ const updateTask = (request, response) => {
 
         tasks[taskIndex] = task;
 
-        return response.send(task);
+        return response.send({"message":"Task updated successfully"});
     } catch (error) {
         if (error.name == 'NOT FOUND ERROR'){
             return response.status(404).send({ message: error.message });
         }
+
+        return response.status(500).send({ message: 'Something went wrong' });
     }
 };
 
 const deleteTask = (request, response) => {
     try {
-        const taskToUpdate = matchedData(request);
+        const taskToDelete = matchedData(request);
 
-        const taskIndex = findTaskIndex(taskToUpdate);
+        const taskIndex = findTaskIndex(taskToDelete);
         const task = {...tasks[taskIndex]};
 
         tasks.splice(taskIndex, 1);
 
-        return response.send(task);
+        return response.send({"message":"Task deleted successfully"});
     } catch (error) {
         if (error.name == 'NOT FOUND ERROR'){
             return response.status(404).send({ message: error.message });
         }
+
+        return response.status(500).send({ message: 'Something went wrong' });
     }
 };
 
@@ -95,3 +99,4 @@ module.exports = {
     updateTask,
     deleteTask
 };
+deleteTaskSchema
