@@ -14,7 +14,6 @@ const getTaskById = (request, response) => {
 
         return response.send(task);
     } catch (error) {
-        console.log(error);
         
         if (error.name == 'NOT FOUND ERROR'){
             return response.status(404).send({ message: error.message });

@@ -29,9 +29,7 @@ const deleteTaskSchema = {
     id: { notEmpty: true, isNumeric: true, in: ['params']}
 };
 
-const validate = (request, response, next) => {
-    console.log('request', request.body, JSON.parse(JSON.stringify(request.body)));
-    
+const validate = (request, response, next) => {    
     const errors = validationResult(request);
 
     if (!errors.isEmpty()) {
@@ -46,5 +44,6 @@ module.exports = {
     createTaskSchema,
     getTaskByIdSchema,
     updateTaskSchema,
+    deleteTaskSchema,
     validate
 }
